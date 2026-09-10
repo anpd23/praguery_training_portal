@@ -1,7 +1,7 @@
 # Praguery Academy Product & Technical Specification (v1.0)
 
 ## 1. Executive Summary
-Praguery Academy is the next evolution of `training.praguery.com`: a role-based, PIN-first, iPad-optimized internal training platform for all Praguery locations.
+Praguery Academy is the next evolution of `training.praguery.com`: a role-based, iPad-optimized internal training platform for all Praguery locations. **Shipped auth in this repo:** tap a role on the shared iPad (no PIN pad).
 
 Core product decisions:
 - **Primary device:** shared iPad kiosk flow with intermittent Wi-Fi tolerance.

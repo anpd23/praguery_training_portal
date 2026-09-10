@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3ece3;
+  --foreground: #1c1612;
+  --ink: #161411;
+  --cream: #f7f1e8;
+  --paper: #fffaf4;
+  --teal: #1aa6a1;
+  --dark-teal: #0f6e71;
+  --gold: #c4a35a;
+  --light-teal: #d7f1ee;
+  --light-gold: #f4e6c4;
+  --muted: #6b6258;
+  --border: #e4d8c8;
+  --danger: #b42318;
+  --chalkboard: #1b1916;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-teal: var(--teal);
+  --color-dark-teal: var(--dark-teal);
+  --color-gold: var(--gold);
+  --color-light-teal: var(--light-teal);
+  --color-light-gold: var(--light-gold);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+  --color-chalkboard: var(--chalkboard);
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-script: var(--font-script), cursive;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}

@@ -1,0 +1,10 @@
+project_id = "praguery-academy-dev"
+
+[api]
+enabled = true
+
+[db]
+major_version = 15
+
+[functions.pin-login]
+verify_jwt = false

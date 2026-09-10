@@ -1,53 +1,51 @@
-# Praguery Training Portal
+# Praguery Academy
 
-This repository is the starting point for **Praguery Academy v1**, the future internal training portal for Praguery teams.
+iPad-first employee training for [The Praguery](https://www.praguery.com/). Role tap on a shared iPad (no PIN), role paths, shift checklists, quizzes, SOP library, and a supervisor desk. Demo mode works on a laptop without Supabase; link a project when you are ready for a live system of record.
 
-## What this repository is
+Locations in the app match the public site: Lafarge Lake cafe (Coquitlam), McArthurGlen truck (Richmond), Sea-to-Sky Gondola truck (Squamish), Grouse Mountain, and Metro Vancouver catering.
 
-Right now, this repository is **not a finished app** you can open and use on a laptop.
+## Run it on your laptop
 
-It currently contains:
+You need Node.js 20+.
 
-- a planning and product document
-- the starting database setup for developers
+```bash
+npm install
+npm run dev
+```
 
-## Can I run this on my laptop?
+Open [http://localhost:3000](http://localhost:3000). Tap a role to begin. Use **Switch teammate** in Settings when the next person starts.
 
-**Not yet.**
+Progress, checklists, quizzes, and photos save in the browser (IndexedDB) so a Wi-Fi drop does not lose the shift.
 
-There is currently no website or desktop app in this repository to launch.  
-At this stage, the repository is mainly for planning and technical setup.
+## Publish on Vercel
 
-## If you want a copy on your laptop
+1. Push this repo to GitHub (already the intended path).
+2. In [Vercel](https://vercel.com/new), **Import** the GitHub repository. Framework preset: **Next.js**. Root directory: repo root.
+3. You can deploy with no env vars — the app runs in demo mode.
+4. When you link Supabase, add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` (see `.env.example`). Redeploy.
+5. After the first production URL is live, add the iPads via Safari → Add to Home Screen.
 
-If you simply want the files on your computer for review:
+## What is in this version
 
-1. Install **GitHub Desktop** from https://desktop.github.com/
-2. Sign in to GitHub
-3. Open this repository on GitHub
-4. Click **Code**
-5. Choose **Open with GitHub Desktop**
-6. Pick a folder on your laptop and finish cloning
+- Role landing (tap to sign in as that role’s demo teammate)
+- New-hire paths, step-by-step modules, quizzes, certificates
+- Opening / closing / pre-close / cleaning checklists numbered like CAFE-CLOSE-C001, with actual readings, exceptions (`none` if nothing went wrong), and a different verifier
+- In-app SOP library (replaces the Google Drive panel)
+- Staff menu board (prices stay off guest-facing surfaces)
+- Supervisor roster, trial-shift scorecard, manager CMS + CSV export
+- Offline banner and Sync now
+- Brand from the live site: cream, chalkboard, “Make life just a little bit sweeter”
 
-After that, you can open and read the files locally.
+## Supabase (optional next)
 
-## Most useful file for non-technical review
+1. Copy `.env.example` to `.env.local` and fill in the project URL and anon key.
+2. `npx supabase db push` using `supabase/migrations/`.
+3. `npx supabase db reset` (local) applies `supabase/seed.sql`.
 
-If you are a store owner or operations lead, the main file to read is:
+The historical `employee_pin_credentials` table remains in the first migration. The app does not use PINs.
 
-- `docs/praguery-academy-spec-v1.md`
+## Docs
 
-That document explains what the training portal is planned to do.
-
-## Technical files
-
-There is also a developer database file here:
-
-- `supabase/migrations/20260910181000_initial_praguery_academy.sql`
-
-Most non-technical users do not need to open or change that file.
-
-## What happens next
-
-The next major step is to build the actual training portal app.  
-Once that exists, this README can be updated with simple setup steps for running it locally.
+- Product spec: `docs/praguery-academy-spec-v1.md`
+- Brand excerpt: `docs/brand-book.md`
+- Runbooks: `docs/runbooks/` (role switch, device re-provision, new location)

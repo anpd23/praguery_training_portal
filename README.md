@@ -1,6 +1,6 @@
 # Praguery Training Portal
 
-This repository is the starting point for **Praguery Academy v1**, the future internal training portal for Praguery teams.
+This repository is the starting point for **Praguery Academy**, the internal training portal for Praguery team members.
 
 ## What this repository is
 
@@ -9,7 +9,7 @@ Right now, this repository is **not a finished app** you can open and use on a l
 It currently contains:
 
 - a planning and product document
-- the starting database setup for developers
+- the starting database setup 
 
 ## Can I run this on my laptop?
 
@@ -47,7 +47,4 @@ There is also a developer database file here:
 
 Most non-technical users do not need to open or change that file.
 
-## What happens next
 
-The next major step is to build the actual training portal app.  
-Once that exists, this README can be updated with simple setup steps for running it locally.

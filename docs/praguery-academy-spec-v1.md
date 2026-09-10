@@ -33,7 +33,7 @@ Core product decisions:
 - IndexedDB write queue with reconnect sync to Supabase.
 - Autosave to survive app kills/sleep.
 - Graceful fallback from video to guide content.
-- Row-level protections to prevent cross-user/location data leakage.
+- Row-level protections are required across profile, progress, checklist, quiz, certification, and SOP data to prevent cross-user/location leakage.
 
 ### Performance
 - Video start target: <2s on strong Wi-Fi, <5s on weak links.
@@ -69,9 +69,12 @@ Core product decisions:
 
 ## 4. Roles & Permissions
 - **Trainee:** assigned paths, own progress/certifications, own checklist participation.
-- **Supervisor:** trainee access + location roster, progress visibility, trial shift scoring, PIN reset.
-- **Manager:** supervisor access + content management and staffing/reporting.
-- **Franchise/Corporate Admin:** full cross-location governance and compliance export.
+- **Supervisor:** trainee access + location roster, progress visibility, trial shift scoring; PIN reset is implemented via Edge Function + service-role backend path (not direct client table access).
+- **Manager:** baseline migration currently grants the same location-scoped read/reporting path as supervisors; manager-specific content-management authorization is deferred to follow-up migrations.
+- **Franchise/Corporate Admin:** full cross-location governance and compliance export (authorization policies are deferred from this baseline migration and intended for follow-up migrations).
+
+Baseline schema implementation status: trainee access plus supervisor/manager location-scoped reporting paths are included in starter policies; manager content-management and franchise/corporate-admin cross-organization authorization paths are intentionally deferred.
+The baseline migration does not yet create dedicated franchise/corporate-admin role records, admin-only tables, or RLS policies for cross-organization access.
 
 ## 5. Data Model
 The canonical starting schema is versioned in:
@@ -83,7 +86,7 @@ It includes:
 - checklist templates, runs, and proof attachments
 - module progress, quiz attempts, certifications
 - SOP library versioning
-- starter RLS policies for profile and progress access
+- starter RLS policies for profiles, progress, content reads, checklists, quiz attempts, certifications, and SOP access
 
 ## 6. Engineering Setup Guide
 
